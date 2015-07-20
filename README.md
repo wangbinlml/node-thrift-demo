@@ -3,6 +3,9 @@
 Apache Thrift RPC system node.js Demo
 (本命令是在ubuntu下执行,其他系统替换相应命令)
 
+doc:
+http://thrift.apache.org/docs/
+
 ### 1.安装依赖
 sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libboost-system-dev libboost-filesystem-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
 ### 2.下载thrift源码编译执行
