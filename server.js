@@ -24,13 +24,13 @@ var UserStorage = require('./gen-nodejs/UserStorage.js'),
 var users = {};
 
 var server = thrift.createServer(UserStorage, {
-    store: function(user, result) {
+    store: function (user, result) {
         console.log("server stored:", user.uid);
         users[user.uid] = user;
         result(null);
     },
 
-    retrieve: function(uid, result) {
+    retrieve: function (uid, result) {
         console.log("server retrieved:", uid);
         result(null, users[uid]);
     }
