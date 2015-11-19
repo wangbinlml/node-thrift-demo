@@ -38,7 +38,7 @@ if (cluster.isMaster) {
         console.log("connection");
     });
     server.on('request', function (req, res) {
-        var connection = thrift.createConnection('localhost', 9090),
+        var connection = thrift.createConnection('127.0.0.1', 9090),
             client = thrift.createClient(GetMsg, connection);
 
         var msg = new ttypes.Msg({
@@ -48,9 +48,11 @@ if (cluster.isMaster) {
 
         connection.on('error', function (err) {
             console.error(err);
+            connection.end();
         });
 
         client.get(msg, function (err, response) {
+            connection.end();
             if (err) {
                 console.error(err);
             } else {

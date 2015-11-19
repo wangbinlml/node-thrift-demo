@@ -35,7 +35,6 @@ if (cluster.isMaster) {
         }, {});
 
         server.listen(9090);
-        console.log('Server running at 9090 port');
     }catch(e){
         console.error(e);
     }
