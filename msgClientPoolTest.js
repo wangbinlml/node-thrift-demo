@@ -23,45 +23,14 @@ var pool = poolModule.Pool({
         }
     },
     destroy  : function(client) { client.end(); },
-    max      : 10,
+    max      : 100,
     // optional. if you set this, make sure to drain() (see step 3)
-    min      : 2,
+    min      : 80,
     // specifies how long a resource can stay idle in pool before being removed
     idleTimeoutMillis : 30000,
     // if true, logs via console.log - can also be a function
     log : true
 });
-
-/*
-var poolModule = require('./lib/thrift-pool');
-var pool = poolModule.Pool({
-    name: 'thrift_pool',
-    create: function (callback) {
-        try {
-            var connection = thrift.createConnection('localhost', 9090);
-            connection.on("error", function(err) {
-                console.error(err);
-                connection.end();
-            });
-            callback(null, connection);
-        }catch(err){
-            console.log(err);
-        }
-    },
-    destroy: function (connection) {
-        try{
-            connection.end();
-        }catch(err){
-            console.error(err);
-        }
-    },
-    max: 2,
-    min: 2,
-    idleTimeoutMillis: 300000,
-    log: true,
-    reapInterval: 300000
-});
-*/
 
 /**
  * 释放connection
@@ -79,9 +48,6 @@ function releasePool(connection){
  * 获取connection
  */
 function getClient(connection){
-    //var mp = new thrift.Multiplexer();
-    //var client = mp.createClient("GetMsg", GetMsg, connection);
-    //pool.pushUsingObjects(connection);
     var client = client = thrift.createClient(GetMsg, connection);
     return client;
 }
