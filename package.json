@@ -11,7 +11,8 @@
     "node": ">= 0.2.4"
   },
   "dependencies": {
-    "thrift": "^0.9.3"
+    "thrift": "^0.9.3",
+    "generic-pool": "~2.2.2"
   },
   "devDependencies": {},
   "scripts": {
